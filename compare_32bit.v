@@ -1,0 +1,44 @@
+module compare_32bit(a,b,bigger,equal,less);
+  input [31:0] a,b;
+  output bigger,equal,less;
+  wire [31:0] Big,Equ,Les;
+  compare_1bit A[31:0](a,b,Big,Equ,Les);
+  wire [31:0] effective;
+  assign effective[31] = 1'b1;
+  assign effective[30] = Equ[31];
+  assign effective[29] = Equ[31] & Equ[30];
+  assign effective[28] = Equ[31] & Equ[30] & Equ[29];
+  assign effective[27] = Equ[31] & Equ[30] & Equ[29] & Equ[28];
+  assign effective[26] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27];
+  assign effective[25] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26];
+  assign effective[24] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25];
+  assign effective[23] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24];
+  assign effective[22] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23];
+  assign effective[21] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22];
+  assign effective[20] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21];
+  assign effective[19] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20];
+  assign effective[18] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19];
+  assign effective[17] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18];
+  assign effective[16] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17];
+  assign effective[15] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16];
+  assign effective[14] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15];
+  assign effective[13] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14];
+  assign effective[12] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13];
+  assign effective[11] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12];
+  assign effective[10] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12] & Equ[11];
+  assign effective[9] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12] & Equ[11] & Equ[10];
+  assign effective[8] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12] & Equ[11] & Equ[10] & Equ[9];
+  assign effective[7] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12] & Equ[11] & Equ[10] & Equ[9] & Equ[8];
+  assign effective[6] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12] & Equ[11] & Equ[10] & Equ[9] & Equ[8] & Equ[7];
+  assign effective[5] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12] & Equ[11] & Equ[10] & Equ[9] & Equ[8] & Equ[7] & Equ[6];
+  assign effective[4] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12] & Equ[11] & Equ[10] & Equ[9] & Equ[8] & Equ[7] & Equ[6] & Equ[5];
+  assign effective[3] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12] & Equ[11] & Equ[10] & Equ[9] & Equ[8] & Equ[7] & Equ[6] & Equ[5] & Equ[4];
+  assign effective[2] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12] & Equ[11] & Equ[10] & Equ[9] & Equ[8] & Equ[7] & Equ[6] & Equ[5] & Equ[4] & Equ[3];
+  assign effective[1] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12] & Equ[11] & Equ[10] & Equ[9] & Equ[8] & Equ[7] & Equ[6] & Equ[5] & Equ[4] & Equ[3] & Equ[2];
+  assign effective[0] = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12] & Equ[11] & Equ[10] & Equ[9] & Equ[8] & Equ[7] & Equ[6] & Equ[5] & Equ[4] & Equ[3] & Equ[2] & Equ[1];
+  assign equal = Equ[31] & Equ[30] & Equ[29] & Equ[28] & Equ[27] & Equ[26] & Equ[25] & Equ[24] & Equ[23] & Equ[22] & Equ[21] & Equ[20] & Equ[19] & Equ[18] & Equ[17] & Equ[16] & Equ[15] & Equ[14] & Equ[13] & Equ[12] & Equ[11] & Equ[10] & Equ[9] & Equ[8] & Equ[7] & Equ[6] & Equ[5] & Equ[4] & Equ[3] & Equ[2] & Equ[1] & Equ[0];
+  assign bigger = (effective[31] & Big[31]) | (effective[30] & Big[30]) | (effective[29] & Big[29]) | (effective[28] & Big[28]) | (effective[27] & Big[27]) | (effective[26] & Big[26]) | (effective[25] & Big[25]) | (effective[24] & Big[24]) | (effective[23] & Big[23]) | (effective[22] & Big[22]) | (effective[21] & Big[21]) | (effective[20] & Big[20]) | (effective[19] & Big[19]) | (effective[18] & Big[18]) | (effective[17] & Big[17]) | (effective[16] & Big[16]) | (effective[15] & Big[15]) | (effective[14] & Big[14]) | (effective[13] & Big[13]) | (effective[12] & Big[12]) | (effective[11] & Big[11]) | (effective[10] & Big[10]) | (effective[9] & Big[9]) | (effective[8] & Big[8]) | (effective[7] & Big[7]) | (effective[6] & Big[6]) | (effective[5] & Big[5]) | (effective[4] & Big[4]) | (effective[3] & Big[3]) | (effective[2] & Big[2]) | (effective[1] & Big[1]) | (effective[0] & Big[0]);
+  assign less = (effective[31] & Les[31]) | (effective[30] & Les[30]) | (effective[29] & Les[29]) | (effective[28] & Les[28]) | (effective[27] & Les[27]) | (effective[26] & Les[26]) | (effective[25] & Les[25]) | (effective[24] & Les[24]) | (effective[23] & Les[23]) | (effective[22] & Les[22]) | (effective[21] & Les[21]) | (effective[20] & Les[20]) | (effective[19] & Les[19]) | (effective[18] & Les[18]) | (effective[17] & Les[17]) | (effective[16] & Les[16]) | (effective[15] & Les[15]) | (effective[14] & Les[14]) | (effective[13] & Les[13]) | (effective[12] & Les[12]) | (effective[11] & Les[11]) | (effective[10] & Les[10]) | (effective[9] & Les[9]) | (effective[8] & Les[8]) | (effective[7] & Les[7]) | (effective[6] & Les[6]) | (effective[5] & Les[5]) | (effective[4] & Les[4]) | (effective[3] & Les[3]) | (effective[2] & Les[2]) | (effective[1] & Les[1]) | (effective[0] & Les[0]);
+endmodule
+    
+    
