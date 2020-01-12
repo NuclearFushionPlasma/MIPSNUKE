@@ -5,9 +5,9 @@ module MIPS(
   output [31:0] mem_address_MEM,mem_data_MEM,PC_address
 );
     //------------------------------------------------------------------------------------------------------------------------------------
-   wire [31:0]  next_PC, next_PC_PC, next_PC_IR, next_PC_ALU;
-   assign next_PC = next_PC_PC | next_PC_IR | next_PC_ALU ;
-   wire enable_PC;
+    wire [31:0]  next_PC, next_PC_PC, next_PC_IR, next_PC_ALU;
+    assign next_PC = next_PC_PC | next_PC_IR | next_PC_ALU ;
+    wire enable_PC;
 	PC_register register1(
 		.next_PC(next_PC), 
 		.now_PC(PC_address), 
@@ -87,10 +87,10 @@ module MIPS(
 		.lui(lui_IR)
 	);
     //--------------------------------------------------------------------------------------------------------------------------------------
-   wire[4:0] mode_ALU, reg_address_ALU, cal_add_A_ALU, cal_add_B_ALU, add_mem_ALU;
-   wire cal_ALU, load_ALU, store_ALU, write_reg_ALU, jump_ALU, enable_ALU, cmp_ALU, cmp_signed_ALU, lui_ALU,write_reg_ALU_To_MEM;
-   wire [31:0] cal_A_1, cal_B_1, mem_data_From_IR; 
-   wire [31:0] cal_A_ALU,cal_B_ALU,mem_data_ALU,reg_data_ALU,reg_data_ALU_From_IR;
+    wire[4:0] mode_ALU, reg_address_ALU, cal_add_A_ALU, cal_add_B_ALU, add_mem_ALU;
+    wire cal_ALU, load_ALU, store_ALU, write_reg_ALU, jump_ALU, enable_ALU, cmp_ALU, cmp_signed_ALU, lui_ALU,write_reg_ALU_To_MEM;
+    wire [31:0] cal_A_1, cal_B_1, mem_data_From_IR; 
+    wire [31:0] cal_A_ALU,cal_B_ALU,mem_data_ALU,reg_data_ALU,reg_data_ALU_From_IR;
 	wire bigger_ALU,equal_ALU,less_ALU;
 	wire [31:0] ALU_out,mem_address_ALU;
 	wire cancel_ALU;
@@ -228,7 +228,7 @@ module MIPS(
 	wire enable_WB = enable_MEM & write_reg_MEM;
 	WB_register register5(.next_data(reg_data_MEM), .next_add(reg_address_MEM), .next_write_reg(enable_WB), .clk(clk), .reset(reset), .data(data_C), .add(add_C), .write_reg(write_enable));
 	//Control signal set--------------------------------------------------------------------------------------------------------------------
-	assign enable_PC = ~cancel_IR;
+	assign enable_PC = ~（cancel_IR | cancel_ALU);
 	assign enable_IR = enable_from_PC &(~cancel_ALU);
 	assign warp_ALU = reg_data_ALU;
 	assign warp_MEM = reg_data_MEM;
